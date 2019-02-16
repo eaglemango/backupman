@@ -20,9 +20,9 @@ for file_type in $@; do
   done
 done
 
-tar -cf $ARCHIVE_NAME.tar $DIR_NAME
+DATE=`date +%d.%m.%Y-%H:%M:%S`
+tar --force-local -cf "$ARCHIVE_NAME-$DATE".tar $DIR_NAME
 
 rm -rf $DIR_NAME
 
 echo "done"
-
