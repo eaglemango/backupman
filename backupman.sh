@@ -8,12 +8,16 @@ cd $HOME/backupman-archives
 
 DIR_NAME=$1
 ARCHIVE_NAME=$2
+shift
+shift
 
 mkdir $DIR_NAME
 
 shopt -s globstar
-for file in $HOME/**/*.cpp; do
-  cp $file $DIR_NAME
+for file_type in $@; do
+  for file in $HOME/**/*.$file_type; do
+    cp $file $DIR_NAME
+  done
 done
 
 tar -cf $ARCHIVE_NAME.tar $DIR_NAME
