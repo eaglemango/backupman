@@ -16,7 +16,7 @@ mkdir $DIR_NAME
 shopt -s globstar
 for file_type in $@; do
   for file in $HOME/**/*.$file_type; do
-    if [ -e $file ]; then
+    if [ -f $file ]; then
       cp $file $DIR_NAME
     fi
   done
