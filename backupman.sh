@@ -17,7 +17,13 @@ shopt -s globstar
 for file_type in $@; do
   for file in $HOME/**/*.$file_type; do
     if [[ ( -r "$file" ) && ( -f "$file" ) ]]; then
-      cp "$file" "$DIR_NAME"
+      FILE_PATH="$(echo "$file" | rev | cut -d'/' -f2- | rev | cut -d'/' -f4-)"
+
+      if [ ! -d "$DIR_NAME/$FILE_PATH" ]; then
+        mkdir -p "$DIR_NAME/$FILE_PATH"
+      fi
+
+      cp "$file" "$DIR_NAME/$FILE_PATH"
     fi
   done
 done
