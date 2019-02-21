@@ -6,7 +6,18 @@ fi
 
 cd $HOME/backupman-archives
 
+if [ -z "$1" ]; then
+  echo "done"
+  exit 1
+fi
+
 DIR_NAME=$1
+
+if [ -z "$2" ]; then
+  echo "done"
+  exit 1
+fi
+
 ARCHIVE_NAME=$2
 shift
 shift
